@@ -7,8 +7,11 @@ model_name = "gemma3:1b"
 prompt = "What is the capital of France?"
 
 # Send the prompt to the model and get the response
-response = ollama.generate(model=model_name, prompt=prompt)
+response = ollama.chat(model = model_name, messages=[{'role':'user', 'content':prompt}])
 
 # Print the response
 print(type(response))
-print(response.response)
+
+answer_text = response['message']['content']
+
+print(answer_text)
